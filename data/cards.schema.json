@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/lounge-eligibility-tracker/cards.schema.json",
+  "title": "Credit Card Lounge Eligibility Data",
+  "type": "object",
+  "required": ["schema_version", "cards"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "cards": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/card" }
+    }
+  },
+  "$defs": {
+    "card": {
+      "type": "object",
+      "required": [
+        "id",
+        "card_name",
+        "issuer",
+        "network",
+        "primary_card",
+        "add_on_card_rule",
+        "eligible_lounges",
+        "last_verified"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "card_name": { "type": "string", "minLength": 1 },
+        "issuer": { "type": "string", "minLength": 1 },
+        "network": {
+          "enum": ["DreamFolks", "Priority Pass", "LoungeKey", "Visa", "Mastercard", "RuPay"]
+        },
+        "primary_card": {
+          "type": "object",
+          "required": ["quarterly_visit_limit", "spend_conditions"],
+          "properties": {
+            "quarterly_visit_limit": { "type": ["integer", "null"], "minimum": 0 },
+            "spend_conditions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["amount", "currency", "period", "description"],
+                "properties": {
+                  "amount": { "type": "number", "minimum": 0 },
+                  "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+                  "period": { "type": "string", "minLength": 1 },
+                  "description": { "type": "string" }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "add_on_card_rule": {
+          "enum": ["shared_quota", "independent_quota", "no_access"]
+        },
+        "eligible_lounges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["airport_code", "terminal", "lounge_name"],
+            "properties": {
+              "airport_code": { "type": "string", "minLength": 3, "maxLength": 4 },
+              "terminal": { "type": "string" },
+              "lounge_name": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "last_verified": { "type": "string", "format": "date-time" },
+        "source_url": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
