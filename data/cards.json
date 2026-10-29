@@ -1,4 +1,68 @@
 {
   "schema_version": 1,
-  "cards": []
+  "cards": [
+    {
+      "id": "hdfc-regalia-gold",
+      "card_name": "HDFC Bank Regalia Gold",
+      "issuer": "HDFC Bank",
+      "network": "Visa",
+      "primary_card": {
+        "quarterly_visit_limit": 3,
+        "spend_conditions": [
+          {
+            "amount": 100000,
+            "currency": "INR",
+            "period": "preceding_quarter",
+            "description": "Spend at least ₹1,00,000 in the preceding quarter to unlock the next quarter's domestic lounge benefit; verify current card-variant terms with HDFC Bank."
+          }
+        ]
+      },
+      "add_on_card_rule": "shared_quota",
+      "eligible_lounges": [],
+      "last_verified": "2026-10-29T00:00:00Z",
+      "source_url": "https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-gold"
+    },
+    {
+      "id": "icici-sapphiro-mastercard",
+      "card_name": "ICICI Bank Sapphiro Credit Card (Mastercard variant)",
+      "issuer": "ICICI Bank",
+      "network": "Mastercard",
+      "primary_card": {
+        "quarterly_visit_limit": 4,
+        "spend_conditions": [
+          {
+            "amount": 75000,
+            "currency": "INR",
+            "period": "preceding_spends_quarter",
+            "description": "Four domestic lounge visits per quarter for primary cardholders after eligible spends of ₹75,000 or more in the preceding spends quarter."
+          }
+        ]
+      },
+      "add_on_card_rule": "no_access",
+      "eligible_lounges": [],
+      "last_verified": "2026-10-29T00:00:00Z",
+      "source_url": "https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card"
+    },
+    {
+      "id": "axis-atlas",
+      "card_name": "Axis Bank ATLAS Credit Card",
+      "issuer": "Axis Bank",
+      "network": "Mastercard",
+      "primary_card": {
+        "quarterly_visit_limit": 2,
+        "spend_conditions": [
+          {
+            "amount": 1500000,
+            "currency": "INR",
+            "period": "anniversary_year",
+            "description": "The published benefit table associates eight domestic and four international lounge visits with the Platinum tier (₹15 lakh milestone spend); represented here as up to two domestic visits per quarter. Check current card terms and tier eligibility."
+          }
+        ]
+      },
+      "add_on_card_rule": "shared_quota",
+      "eligible_lounges": [],
+      "last_verified": "2026-10-29T00:00:00Z",
+      "source_url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card"
+    }
+  ]
 }
